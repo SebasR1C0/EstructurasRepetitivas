@@ -1,0 +1,31 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void imp(int a) {
+	int suma = 0, b = -1, c=1;
+	while (c <= a) {
+		b += 2;
+		suma = suma + b;
+		c++;
+	}
+	cout << "La suma de los numeros impares es: " << suma << endl;
+}
+void par(int a) {
+		int suma = 0, b = 0, c=1;
+		while (c <= a) {
+			b += 2;
+			suma = suma + b;
+			c++;
+		}
+		cout << "La suma de los numeros pares es: " << suma << endl;
+}
+int main() {
+	int a, b;
+	cout << "Ingrese cantidad de numeros pares a sumar " << endl;
+	cin >> a;
+	cout << "Ingrese cantidad de numeros impares a sumar " << endl;
+	cin >> b;
+	par(a);
+	imp(b);
+	return 0;
+}
