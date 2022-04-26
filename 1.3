@@ -1,0 +1,19 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void imp(int a) {
+	int m = 0, b = 0;
+	cout << "Los multiplos de tres menores de n: ";
+	while (m <= a - 3) {
+		b++;
+		m = b*3;
+		cout << m <<" ";
+	}
+}
+int main() {
+	int a;
+	cout << "Ingrese el numero mayor " << endl;
+	cin >> a;
+	imp(a);
+	return 0;
+}
