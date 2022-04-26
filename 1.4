@@ -1,0 +1,18 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void imp(int a) {
+	int m = 0, b = 0;
+	while (b < 10 ) {
+		b++;
+		m = b * a;
+		cout << a << " x " << b << " = " << m << endl;
+	}
+}
+int main() {
+	int a;
+	cout << "Ingrese un numero: ";
+	cin >> a;
+	imp(a);
+	return 0;
+}
