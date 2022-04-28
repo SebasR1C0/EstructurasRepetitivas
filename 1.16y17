@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void ale(int n) {
+	cout << "1, 1 ";
+	int t1 = 1, c = 2, t2 = 1, tu = 0, b = 0;
+	while (c < n) {
+		tu = t1 + t2 ;
+		b = b + tu;
+		cout<< ", " << tu ;
+		t1 = t2;
+		t2 = tu;
+		c++;
+	}
+	cout << endl;
+	cout << "La suma es : " << b+2 << endl;
+}
+int main() {
+	int n;
+	cout << "Ingrese el valor de N"<< endl;
+	cin >> n;
+	ale(n);
+	return 0;
+}
