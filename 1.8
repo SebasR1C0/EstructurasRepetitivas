@@ -1,0 +1,40 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+int main() {
+	int numero, contador = 0, positivo = 0, negativo = 0 ,mayor, menor;
+	while (true) {
+		cout << "Ingrese un numero: ";
+		cin >> numero;
+		if (numero == 0) {
+			break;
+		}
+		contador++;
+		if (numero > 0) {
+			positivo++;
+		}
+		else {
+			negativo++;
+		}
+		if (contador == 1) {
+			mayor = numero;
+			menor = numero;
+		}
+		else {
+			if (mayor <= numero) {
+				mayor = numero;
+			}
+			if (menor >= numero) {
+				menor = numero;
+			}
+		}
+	}
+	cout << "Numeros leidos = " << contador << endl;
+	if (numero != 0) {
+		cout << "Numero mayor = " << mayor << endl;
+		cout << "Numero menor = " << menor << endl;
+	}
+	cout << "Numeros positivos = " << positivo << endl;
+	cout << "Numeros negativos = " << negativo << endl;
+	return 0;
+}
