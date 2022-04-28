@@ -1,0 +1,26 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void peso(int n) {
+	int peso, alum = 1, m4 = 0, cyc = 0, mcyms = 0, s = 0;
+	while (alum <= n) {
+		cout << "Ingrese el peso del alumno : ";
+		cin >> peso;
+		if (peso < 40) m4++;
+		if (peso >= 40 && peso <= 50) cyc++;
+		if (peso > 50 && peso < 60) mcyms++;
+		if (peso >= 60) s++;
+		alum++;
+	}
+	cout << "Alumnos de menos de 40 kg: " << m4 << endl;
+	cout << "Alumnos entre 40 y 50 kg: " << cyc << endl;
+	cout << "Alumnos de mas de 50 y menos de 60 kg: " << mcyms << endl;
+	cout << "Alumnos de mas o igual a 60 kg: " << s << endl;
+}
+int main() {
+	int n;
+	cout << "Ingrese el numero de alumnos: ";
+	cin >> n;
+	peso(n);
+	return 0;
+}
