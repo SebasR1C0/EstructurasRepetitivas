@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void ale(int n) {
+	int b, a = 0, contador = 1;
+	while (contador < n) {
+		b = n % contador;
+		if (b == 0) {
+			a = a + contador;
+		}
+		contador++;
+	}
+	if (a == n) {
+		cout << "Es perfecto" << endl;
+	}
+	else {
+		cout << "Es imperfecto" << endl;
+	}
+}
+int main() {
+	int n;
+	cout << "Ingrese un numero"<< endl;
+	cin >> n;
+	ale(n);
+	return 0;
+}
