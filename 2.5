@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+int main() {
+	char n, m;
+	int a, z, jv = 0,h=0,mu=0,hm=0;
+	cout << "Ingrese el numero de personas : ";
+	cin >> z;
+	for (int i = 1; i <= z; i++) {
+		cout << "Sexo de la persona " << i<< " (M o F) : ";
+		cin >> n;
+		cout << "La edad de la persona " << i << " : ";
+		cin >> a;
+		cout << "Estado civil de la persona " << i <<" (a: Soltero; b: Casado; c: Viudo; d: Divorciado) : ";
+		cin >> m;
+		if (n=='F' && m == 'c' && a <= 21 && a >= 16) jv++;
+		if (n == 'F')mu++;
+		if (n == 'M')h++;
+		if (n=='M' && a >30 && (m == 'a' || m == 'b')) {
+			hm++;
+		}
+	}
+	cout << "El numero de jovenes viudas que estan entre 16 y 21 anios: " << jv << endl;
+	cout << "El porcentaje de hombres  en el distrito: " << (100.00 * h) / (mu + h) << "%" << endl;
+	cout << "El porcentaje de mujeres  en el distrito: " << (100.00 * mu) / (mu + h) << "%" << endl;
+	cout << "El numero de hombres mayores de 30 años solteros o divorciados: " << hm << endl;
+	return 0;
+}
