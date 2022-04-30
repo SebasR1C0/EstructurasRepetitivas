@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void ale(int n, int x) {
+	double suma = 0.00, multi = 1.00, a = -1.00;
+	int b, c=0.00;
+	for (int i = 1; i <= n; i++) {
+		c++;
+		for (int b = c; b <= n; b++) {
+			multi = multi * x;
+		}
+		a = a * -1.00;
+		suma = suma + i * a / multi;
+		multi = 1.00;
+	}
+	cout << "La suma es : " << suma << endl;
+}
+int main() {
+	int a, b;
+	cout << "Ingrese el valor de n: "; cin >> a;
+	cout << "Ingrese el valor de x: "; cin >> b;
+	ale(a, b);
+	return 0;
+}
