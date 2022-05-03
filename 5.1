@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void ale(int k, double  a) {
+	double suma = 1.00, multi = 1.00, divi = 1.00;
+	double b, c = 0.00;
+	for (int i = 1; i <= k; i++) {
+		c++;
+		for (int b = c; b >= 1; b--) {
+			multi = multi * a;
+		}
+		divi = divi * i;
+		suma = suma +  multi/divi;
+		multi = 1.00;
+	}
+	cout << "El resultado de e a la 'a' sera : " << suma << endl;
+}
+int main() {
+	int k;
+	double a;
+	do {
+		cout << "Ingrese el valor de k: ";
+		cin >> k;
+	} while (k > 20 && 0 < k);
+	cout << "Ingrese el valor de a: "; cin >> a;
+	ale(k, a);
+	return 0;
+}
