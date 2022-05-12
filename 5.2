@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void ale(int n) {
+	for (int i = n; 1 <= n; n--) {
+		for (int j = 1; j <= n; j++) {
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+int main() {
+	int n;
+	double a;
+	do {
+		cout << "Ingrese un numero: ";
+		cin >> n;
+	} while (n > 10 || 1 > n);
+	ale(n);
+	return 0;
+}
