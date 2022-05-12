@@ -1,0 +1,119 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+double hec() {
+	double b;
+	do {
+		cout << "Ingrese numero de hectareas: ";
+		cin >> b;
+	} while (b < 1);
+	return b;
+}
+void mayor(int mh, int la, int gu, int to) {
+	if (mh > la && mh > gu && mh > to) {
+		cout << "Mala hierba" << endl;
+	}
+	if (mh < la && la > gu && la > to) {
+		cout << "Langosta" << endl;
+	}
+	if (gu > la && mh < gu && gu > to) {
+		cout << "Gusanos" << endl;
+	}
+	if (to > la && to > gu && mh < to) {
+		cout << "Todas las anteriores" << endl;
+	}
+	if (mh == la && mh > gu && mh > to) {
+		cout << "Mala hierba" << endl;
+		cout << "Langosta" << endl;
+	}
+	if (mh == gu && mh > la && mh > to) {
+		cout << "Mala hierba" << endl;
+		cout << "Gusanos" << endl;
+	}
+	if (mh ==to && mh > gu && mh > la) {
+		cout << "Mala hierba" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (gu == la && mh < gu && la > to) {
+		cout << "Langosta" << endl;
+		cout << "Gusanos" << endl;
+	}
+	if (to == la && la > gu && mh < to) {
+		cout << "Langosta" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (to == gu && mh < gu && la < to) {
+		cout << "Gusanos" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (mh == la && la == gu && mh > to) {
+		cout << "Mala hierba" << endl;
+		cout << "Langosta" << endl;
+		cout << "Gusanos" << endl;
+	}
+	if (mh == la && la == to && mh > gu) {
+		cout << "Mala hierba" << endl;
+		cout << "Langosta" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (mh == to && gu == to && mh > la) {
+		cout << "Mala hierba" << endl;
+		cout << "Gusanos" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (la == to && gu == to && mh < la) {
+		cout << "Langosta" << endl;
+		cout << "Gusanos" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+	if (la == to && gu == to && mh == la) {
+		cout << "Mala hierba" << endl;
+		cout << "Langosta" << endl;
+		cout << "Gusanos" << endl;
+		cout << "Todas las anteriores" << endl;
+	}
+}
+int main() {
+	int n,la = 0, gu = 0, to = 0, mh = 0;
+	double suma = 0.00, pagar, total=0;
+	do {
+		cout << "Ingrese tipo de fumigacion: ";
+		cin >> n;
+	} while ((n < 1 || n > 4) && n != -1);
+	while (n != -1) {
+		switch (n) {
+		case 1: mh++;
+			pagar = 10.00; break;
+		case 2: la++;
+			pagar = 20.00; break;
+		case 3: gu++;
+			pagar = 30.00; break;
+		case 4: to++;
+			pagar = 50.00;
+		}
+		double b = hec();
+		if (b > 500) { b = b * 0.95; }
+		suma = pagar * b;
+		total = total + suma;
+		cout << endl;
+		do {
+			cout << "Ingrese tipo de fumigacion: ";
+			cin >> n;
+		} while ((n < 1 || n > 4) && n != -1);
+		if (n == -1) break;
+	}
+	if (total > 1500) {
+		total = (total - 1500) * 0.90 + 1500;
+	}
+	cout << "Los resultados son : " << endl;
+	cout << "----------------------- " << endl;
+	cout << "Mala hierba : " << mh << endl;
+	cout << "Langostas : " << la << endl;
+	cout << "Gusanos : " << gu << endl;
+	cout << "Todo lo anterior : " << to << endl;
+	cout << "Tipos de fumigacion con mayor demanda : " << endl;
+	mayor(mh, la, gu, to);
+	cout << "Total a pagar : " << total << endl;
+		return 0;
+}
