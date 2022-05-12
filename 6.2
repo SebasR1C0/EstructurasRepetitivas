@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+int numerador(int n) {
+	int nu = 2;
+	for (int i = 2; i <= n; i++) {
+		if (i % 2 == 1) {
+			nu = nu + 2;
+	}
+		else {
+			nu = nu * 1;
+		}
+	}
+	return nu;
+}
+int denominador(int n) {
+	int de = 1;
+	for (int i = 2; i <= n; i++) {
+		if (i % 2 == 0) {
+			de = de + 2;
+		}
+		else {
+			de = de * 1;
+		}
+	}
+	return de;
+}
+int main() {
+	int n;
+	double suma = 4.00;
+	do {
+		cout << "Ingrese el valor de N: ";
+		cin >> n;
+	} while (n > 10 || 1 > n);
+	for (int i = 2; i <= n; i++) {
+		if (n == 1) suma = 4.00;
+		else suma = 1.00*suma * numerador(i) / denominador(i);
+	}
+	cout << "Resultado: " << suma << endl;
+	return 0;
+}
