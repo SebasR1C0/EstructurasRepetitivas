@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+char destino() {
+	char a;
+	do {
+		cout << "Ingrese el destino (C: Cajamarca; T: Tacna; H: Huaraz; F: Fin): ";
+		cin >> a;
+		a = toupper(a);
+	} while (a != 'C' && a != 'T' && a != 'H' && a != 'F');
+	return a;
+}
+int dias() {
+	char c;
+	do {
+		cout << "Cuantos dias viajara: ";
+		cin >> c;
+	} while (c<2);
+	return c;
+}
+double pagar(char a, char b, int c) {
+	double ahoram;
+	a = toupper(a);
+	b = toupper(b);
+	switch (a) {
+	case 'C': if (b == 'B') ahoram = 165 + 20 * c * 2.68;
+			else ahoram = 84 * 2.68 + 20 * c * 2.68;
+		break;
+	case 'T': if (b == 'B') ahoram = 138 + 30 * c * 2.68;
+			else ahoram = 133 * 2.68 + 30 * c * 2.68;
+		break;
+	case 'H':if (b == 'B') ahoram = 63 + 30 * c * 2.68;
+			else ahoram = 63 + 30 * c * 2.68;
+	}return ahoram;
+}
+int main() {
+	int tr = 0, v=0, h=0, c=0, t=0 ;
+	double mont, mon, total = 0, montob = 0, montoa = 0, ahoram;
+	char b;
+	char a = destino();
+	a = toupper(a);
+	while (a != 'F') {
+		if (a == 'H') b = 'B';
+		else {
+			do {
+				cout << "Tipo de transporte (B: Bus; A: Avion): ";
+				cin >> b;
+				b = toupper(b);
+			} while (b != 'B' && b != 'A');
+		}
+		int c = dias();
+		switch (a) {
+		case 'C':v++;
+			c++;
+			break;
+		case 'T': tr++;
+			v++;
+			t++;
+			break;
+		case 'H':tr++;
+			v++;
+			h++;
+		}
+		if (b == 'B') mont = 165 * c + 138 * t + 63 * h;
+		else mon = 84 * c + 133 * t;
+		cout << "Monto a pagar: " << pagar(a,b,c) << endl;
+		cout << endl;
+		total = total + pagar(a,b,c);
+		montob = montob + mont;
+		montoa = montoa + mon;
+		char a = destino();
+		a = toupper(a);
+		if (a == 'F') break;
+	}
+	cout << "Cantidad de viajeros que van a un hotel de US$ 30: " << tr << endl;
+		cout << "Porcentaje de viajeros que eligieron viajar a Huaraz : " << (h*100.00)/v << endl;
+		cout << "Ingreso total de dinero en nuevos soles por bus : " << montob << endl;
+		cout << "Ingreso total en dólares por avión : " << montoa << endl;
+		cout << "Ingreso total en Nuevos Soles : " << total << endl;
+}
