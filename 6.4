@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+int hora() {
+	int a;
+	do {
+		cout << "Hora de la emergencia (Entero positivo entre 0 y 23): ";
+		cin >> a;
+	} while (a > 23 || a < 0);
+	return a;
+}
+char origen() {
+	char b;
+	do {
+		cout << "Origen de la emergencia (N: Naturaleza; I: Intervencion del hombre): ";
+		cin >> b;
+		b = toupper(b);
+	} while (b != 'N' && b != 'I');
+	return b;
+}
+char tipo() {
+	char t;
+	do {
+		cout << "Tipo de emergencia (E: Ecologica; S: Sanitaria; R: Radioactiva): ";
+		cin >> t;
+		t = toupper(t);
+	} while (t != 'E' && t != 'S' && t != 'R' && t != 'F');
+	return t;
+}
+void emer(int md, int ma, int ta, int no) {
+	if (md > ma && md > ta && md > no) {
+		cout << "En la MADRUGADA se produjeron más emergencias " << endl;
+	}
+	else if (md < ma && ma > ta && ma > no) {
+		cout << "En la MANANA se produjeron mas emergencias " << endl;
+	}
+	else if (ta > ma && md < ta && ta > no) {
+		cout << "En la TARDE se produjeron mas emergencias " << endl;
+	}
+	else{
+		cout << "En la NOCHE se produjeron mas emergencias " << endl;
+	}
+}
+void predo(int n, int i) {
+	if (n > i) {
+		cout << "Predominan las emergencias por naturaleza " << endl;
+	}
+	else if (n < i) {
+		cout << "Predominan las emergencias por intervencion del hombre " << endl;
+	}
+	else {
+		cout << "Predominan las dos emergencias por igual " << endl;
+	}
+}
+int main() {
+	int e = 0, s = 0, r = 0, md = 0, ma = 0, ta = 0, no = 0, n = 0, i = 0;
+	char t = tipo();
+	t = toupper(t);
+	while (t != 'F') {
+		if (t == 'E') { e++; }
+		else if (t == 'S') { s++; }
+		else { r++; }
+		int a = hora();
+		if (a >= 0 && a <= 5) { md++; }
+		else if (a >= 6 && a <= 12) { ma++; }
+		else if (a >= 13 && a <= 17) { ta++; }
+		else { no++; }
+		char b = origen();
+		if (b == 'N') { n++; }
+		else if (b == 'I') { i++; }
+		cout << endl;
+		t = tipo();
+		t = toupper(t);
+	}
+	cout << "Los resultados son : " << endl;
+	cout << "----------------------- " << endl;
+	cout << "Emergencia ecologica : " << e<< endl;
+	cout << "Emergencia sanitaria : " <<s<< endl;
+	cout << "Emergencia radioactiva : " <<r<< endl;
+	emer(md, ma, ta, no);
+	predo(n, i);
+	return 0;
+}
