@@ -1,0 +1,100 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+int codigo() {
+	int a;
+	do {
+		cout << "Ingrese el codigo: ";
+		cin >> a;
+	} while ((a > 9999 || a < 1000) && a!=0 );
+	return a;
+}
+int tipo() {
+	int b;
+	do{
+		cout << "Tipo de pizza (1: grande; 2:familiar; 3:super familiar): ";
+		cin >> b;
+	} while (b > 3 || b < 1);
+	return b;
+}
+int pedido() {
+	char c;
+	do {
+		cout << "Tipo de pedido (D:delivery; M:mostrador): ";
+		cin >> c;
+		c = toupper(c);
+	} while (c != 'D' && c != 'M');
+	return c;
+}
+int tiempo() {
+	int d;
+	do {
+		cout << "Tiempo de entrega: ";
+		cin >> d;
+	} while (d < 1);
+	return d;
+}
+void mayor(int g, int f, int s) {
+	cout << "La pizza con mayor demanda: ";
+	if (g > f && g > s) {
+		cout << "Grande" << endl;
+	}
+	 else if (f > g && f > s) {
+		cout << "Familiar" << endl;
+	}
+	 else {
+		cout << "Super familiar" << endl;
+	}
+}
+int delivery(int sd, int de) {
+	int pr;
+	if (de > 0) {
+		pr = sd / de;
+	}
+	else { pr = 0; }
+	return pr;
+}
+int mostrador(int sm, int mo) {
+	int pa;
+	if (mo > 0) {
+		pa = sm / mo;
+	}
+	else { pa = 0; }
+	return pa;
+}
+int main(){
+	int a, b, d, importe, pa = 00, g = 0, f = 0, s = 0, gr = 0, sm = 0, sd = 0, mo = 0, de = 0;
+	char c;
+	a = codigo();
+	while (a != 0) {
+		b = tipo();
+		switch (b) {
+		case 1: importe = 50; break;
+		case 2: importe = 60; break;
+		case 3: importe = 68;
+		}
+		if (b == 1)g++;
+		else if (b == 2)f++;
+		else s++;
+		c = pedido();
+		d = tiempo();
+		switch (c) {
+		case 'M': if (d < 21) sm = sm + d, mo++;
+				else importe = 0, gr++; break;
+		case 'D': if (d < 31) sd = sd + d, de++;
+				else importe = 0, gr++; break;
+
+		}
+		cout << "EL importe a pagar es: " << importe << endl;
+		pa = pa + importe;
+		a = codigo();
+	}
+	cout << "Importe total el ultimo mes: " << pa << endl;
+	cout << "Cantidad de pedidos entregados gratis: " << gr << endl;
+	mayor(g, f, s);
+	cout << "Tiempo de entrega promedio de cada tipo: " << endl;
+	cout << "Delivery: " << delivery(sd, de) << endl;
+	cout << "Mostrador: " << mostrador(sm,mo) << endl;
+	return 0;
+}
