@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+double numerador(double x, double y, int i) {
+	double num;
+	if (i % 2 == 1) {
+		num = i * x * 3;
+	}
+	else {
+		num = i * y * 3;
+	}
+	return num;
+}
+double denominador(double a, int i) {
+	double den = 1.00;
+	for (int c = 1; c <= i; c++) {
+		if (c == 1) {
+			den = 1.00;
+		}
+		else {
+			den = den * 2 * a;
+		}
+	}
+	return den;
+}
+int main() {
+	int n;
+	double a, x, y,ab=1.00, suma=0.00;
+	do {
+		cout << "Ingrese el numero de terminos (N): ";
+		cin >> n;
+	} while (n > 30 || n < 0);
+	do {
+		cout << "Ingrese el valor de a: ";
+		cin >> a;
+	} while (a == 0);
+	cout << "Ingrese el valor de x: ";
+	cin >> x;
+	cout << "Ingrese el valor de y: ";
+	cin >> y;
+	for (int i = 1; i <= n; i++) {
+		ab = ab * -1;
+		suma = suma + ab * numerador(x, y, i) / denominador(a, i);
+	}
+	cout << "La sumatoria es: " << suma << endl;
+	return 0;
+}
