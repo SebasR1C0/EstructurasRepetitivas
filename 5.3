@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void espacios(int n) {
+	for (int i = 1; i <= 60-(n/2); i++) {
+		cout << " ";
+	}
+}
+void ale(int n) { 
+	for (int i = 1; i <= n; i++) {
+		espacios(n);
+		for (int j = 1; j <= n; j++) {
+			if (i == 1 || i == n || j == 1 || j == n) {
+				cout << "*";
+			}
+			else {
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+}
+int main() {
+	int n;
+	double a;
+	do {
+		cout << "Ingrese un numero: ";
+		cin >> n;
+	} while (n > 10 || 1 > n);
+	ale(n);
+	return 0;
+}
