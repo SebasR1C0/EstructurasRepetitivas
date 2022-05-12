@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+void espacio(int i) {
+	for (int a = 1; a < 2*i - 2; a++) {
+		cout << " ";
+	}
+}
+void ale(int n) {
+	for (int i = n; i >= 1; i--) {
+		for (int j = n; j >= i; j--) {
+			cout << j;
+		}
+		espacio(i);
+		for (int a = i; a <= n; a++) {
+			if (a == 1) {
+				cout << "";
+			}
+			else { cout << a; }
+		}
+		cout << endl;
+	}
+	for (int i = 2; i <= n; i++) {
+		for (int j = n; j >= i; j--) {
+			cout << j;
+		}
+		espacio(i);
+		for (int a = i; a <= n; a++) {
+			if (a == 1) {
+				cout << "";
+			}
+			else { cout << a; }
+		}
+		cout << endl;
+	}
+}
+int main() {
+	int n;
+	double a;
+	do {
+		cout << "Ingrese N: ";
+		cin >> n;
+	} while (n > 10 || 1 > n);
+	ale(n);
+	return 0;
+}
