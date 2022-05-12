@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+using namespace std;
+double numerador(double a, int b, int i){
+	double divi = 1.00;
+	for (int c = 1; c <= b*i; c++) {
+		divi = divi * a;
+	}
+	return divi;
+}
+double denominador(int i) {
+	double multi = 1.00;
+	for (int a = 1; a <= i; a++) {
+		multi = multi * 2.00;
+	}
+	return multi;
+}
+int main() {
+	int n, b;
+	double a, suma = 0.00;
+	do {
+		cout << "Ingresar el valor de N: ";
+		cin >> n;
+	} while (n < 1);
+	do {
+		cout << "Ingresar el valor de a: ";
+		cin >> a;
+	} while (a < 1 || a > 5);
+	do {
+		cout << "Ingresar el valor de b: ";
+		cin >> b;
+	} while (b < 1 || b > 5);
+	for (int i = 1; i <= n; i++) {
+		suma = suma + numerador(a, b, i) / denominador(i);
+	}
+	cout << "Resultado: " << suma << endl;
+	return 0;
+}
