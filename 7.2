@@ -1,6 +1,4 @@
 #include <iostream>
-#include <cstdlib>
-#include <conio.h>
 using namespace std;
 char destino() {
 	char a;
@@ -16,27 +14,27 @@ int dias() {
 	do {
 		cout << "Cuantos dias viajara: ";
 		cin >> c;
-	} while (c<2);
+	} while (c < 2);
 	return c;
 }
-double pagar(char a, char b, int c) {
+double pagar(char a, char b, int d) {
 	double ahoram;
-	a = toupper(a);
-	b = toupper(b);
-	switch (a) {
-	case 'C': if (b == 'B') ahoram = 165 + 20 * c * 2.68;
-			else ahoram = 84 * 2.68 + 20 * c * 2.68;
-		break;
-	case 'T': if (b == 'B') ahoram = 138 + 30 * c * 2.68;
-			else ahoram = 133 * 2.68 + 30 * c * 2.68;
-		break;
-	case 'H':if (b == 'B') ahoram = 63 + 30 * c * 2.68;
-			else ahoram = 63 + 30 * c * 2.68;
-	}return ahoram;
+	if (a == 'C') {
+		if (b == 'B') { ahoram = 165 + (20 * d) * 2.68; }
+		else { ahoram = 84 * 2.68 + (20 * d) * 2.68; }
+	}
+	else if (a == 'T') {
+		if (b == 'B') { ahoram = 138 + (30 * d) * 2.68; }
+	    else { ahoram = 133 * 2.68 + (30 * d) * 2.68; }
+	}
+	else {
+		 ahoram = 63 + (30 * d) * 2.68;
+	}
+	return ahoram;
 }
 int main() {
-	int tr = 0, v=0, h=0, c=0, t=0 ;
-	double mont, mon, total = 0, montob = 0, montoa = 0, ahoram;
+	int tr = 0, v = 0, h = 0, c = 0, t = 0;
+	double mont, mon, total = 0, montob = 0, montoa = 0;
 	char b;
 	char a = destino();
 	a = toupper(a);
@@ -44,12 +42,13 @@ int main() {
 		if (a == 'H') b = 'B';
 		else {
 			do {
+				if (a == 'H') break;
 				cout << "Tipo de transporte (B: Bus; A: Avion): ";
 				cin >> b;
 				b = toupper(b);
 			} while (b != 'B' && b != 'A');
 		}
-		int c = dias();
+		int d = dias();
 		switch (a) {
 		case 'C':v++;
 			c++;
@@ -63,22 +62,11 @@ int main() {
 			h++;
 		}
 		if (b == 'B') mont = 165 * c + 138 * t + 63 * h;
-		else mon = 84 * c + 133 * t;
-	a = toupper(a);
-	b = toupper(b);
-	switch (a) {
-	case 'C': if (b == 'B') ahoram = 165 + 20 * c * 2.68;
-			else ahoram = 84 * 2.68 + 20 * c * 2.68;
-		break;
-	case 'T': if (b == 'B') ahoram = 138 + 30 * c * 2.68;
-			else ahoram = 133 * 2.68 + 30 * c * 2.68;
-		break;
-	case 'H':if (b == 'B') ahoram = 63 + 30 * c * 2.68;
-			else ahoram = 63 + 30 * c * 2.68;
-	}
-		cout << "Monto a pagar: " << ahoram << endl;
+		if (b == 'A') mon = 84 * c + 133 * t;
+		pagar(a, b, d);
+		cout << "Monto a pagar: " << pagar(a, b,d) << endl;
 		cout << endl;
-		total = total + ahoram;
+		total = total + pagar(a, b, d);
 		montob = montob + mont;
 		montoa = montoa + mon;
 		char a = destino();
@@ -86,8 +74,9 @@ int main() {
 		if (a == 'F') break;
 	}
 	cout << "Cantidad de viajeros que van a un hotel de US$ 30: " << tr << endl;
-		cout << "Porcentaje de viajeros que eligieron viajar a Huaraz : " << (h*100.00)/v << endl;
-		cout << "Ingreso total de dinero en nuevos soles por bus : " << montob << endl;
-		cout << "Ingreso total en dólares por avión : " << montoa << endl;
-		cout << "Ingreso total en Nuevos Soles : " << total << endl;
+	cout << "Porcentaje de viajeros que eligieron viajar a Huaraz : " << (float)(h * 100.00) / v <<"%"<< endl;
+	cout << "Ingreso total de dinero en nuevos soles por bus : " << montob << endl;
+	cout << "Ingreso total en dolares por avion : " << montoa << endl;
+	cout << "Ingreso total en Nuevos Soles : " << total << endl;
+	return 0;
 }
