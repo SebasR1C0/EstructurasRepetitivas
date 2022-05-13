@@ -10,34 +10,33 @@ char destino() {
 	return a;
 }
 int dias() {
-	char c;
+	int d;
 	do {
 		cout << "Cuantos dias viajara: ";
-		cin >> c;
-	} while (c < 2);
-	return c;
+		cin >> d;
+	} while (d < 2);
+	return d;
 }
 double pagar(char a, char b, int d) {
 	double ahoram;
 	if (a == 'C') {
 		if (b == 'B') { ahoram = 165 + (20 * d) * 2.68; }
-		else { ahoram = 84 * 2.68 + (20 * d) * 2.68; }
+		if (b == 'A') { ahoram = 84 * 2.68 + (20 * d) * 2.68; }
 	}
-	else if (a == 'T') {
+	if (a == 'T') {
 		if (b == 'B') { ahoram = 138 + (30 * d) * 2.68; }
-	    else { ahoram = 133 * 2.68 + (30 * d) * 2.68; }
+		if (b == 'A') { ahoram = 133 * 2.68 + (30 * d) * 2.68; }
 	}
-	else {
-		 ahoram = 63 + (30 * d) * 2.68;
+	if (a == 'H') {
+		ahoram = 63 + (30 * d) * 2.68;
 	}
 	return ahoram;
 }
 int main() {
-	int tr = 0, v = 0, h = 0, c = 0, t = 0;
-	double mont, mon, total = 0, montob = 0, montoa = 0;
+	int tr = 0, v = 0, hu = 0, c = 0, t = 0,h=0;
+	double mont=0, mon=0, total = 0, montob = 0, montoa = 0;
 	char b;
 	char a = destino();
-	a = toupper(a);
 	while (a != 'F') {
 		if (a == 'H') b = 'B';
 		else {
@@ -48,33 +47,42 @@ int main() {
 				b = toupper(b);
 			} while (b != 'B' && b != 'A');
 		}
-		int d = dias();
-		switch (a) {
-		case 'C':v++;
+		if (a == 'C') {
+			v++;
 			c++;
-			break;
-		case 'T': tr++;
+		}
+		if (a == 'T') {
+			tr++;
 			v++;
 			t++;
-			break;
-		case 'H':tr++;
-			v++;
-			h++;
 		}
-		if (b == 'B') mont = 165 * c + 138 * t + 63 * h;
-		if (b == 'A') mon = 84 * c + 133 * t;
+		if (a == 'H') {
+			tr++;
+			v++;
+			hu++;
+		}
+		switch (b) {
+		case 'B':mont = 165 * c + 138 * t + 63 * hu; 
+			break;
+		case 'A' : mon = 84 * c + 133 * t; 
+		}
+		int d = dias();
 		pagar(a, b, d);
-		cout << "Monto a pagar: " << pagar(a, b,d) << endl;
+		cout << "Monto a pagar: " << pagar(a, b, d) << endl;
 		cout << endl;
 		total = total + pagar(a, b, d);
 		montob = montob + mont;
 		montoa = montoa + mon;
-		char a = destino();
-		a = toupper(a);
+		a = destino();
+		c = 0;
+		t = 0;
+		h = h + hu;
+		hu = 0;
 		if (a == 'F') break;
 	}
+	cout << endl;
 	cout << "Cantidad de viajeros que van a un hotel de US$ 30: " << tr << endl;
-	cout << "Porcentaje de viajeros que eligieron viajar a Huaraz : " << (float)(h * 100.00) / v <<"%"<< endl;
+	cout << "Porcentaje de viajeros que eligieron viajar a Huaraz : " << (float)(h * 100.00) / v << "%" << endl;
 	cout << "Ingreso total de dinero en nuevos soles por bus : " << montob << endl;
 	cout << "Ingreso total en dolares por avion : " << montoa << endl;
 	cout << "Ingreso total en Nuevos Soles : " << total << endl;
