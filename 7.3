@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+int main() {
+	int n, a, b, c, bien = 0, mal = 0, aprobado=0, buenas=0;
+	do {
+		cout << "Ingrese la cantidad de alumnos: ";
+		cin >> n;
+	} while (n > 40 || 1 > n);
+	for (int i = 1; i <= n; i++) {
+		cout << "Para el alumno " << i << endl;
+		do {
+			cout << "Respuesta de la pregunta 1: ";
+			cin >> a;
+		} while (1 > a);
+		do {
+			cout << "Respuesta de la pregunta 2: ";
+			cin >> b;
+		} while (1 > b);
+		do {
+			cout << "Respuesta de la pregunta 3: ";
+			cin >> c;
+		} while (1 > c);
+		if (a == 3) {
+			bien++;
+		}
+		if (b == 1) {
+			bien+=2;
+		}
+		if (c == 4) {
+			bien++;
+		}
+		if (c != 4) {
+			mal++;
+		}
+		if (bien >= 3) {
+			aprobado++;
+		}
+		if (bien == 4) {
+			buenas++;
+		}
+		bien = 0;
+		cout << endl;
+	}
+	cout << "El porcentaje de alumnos que hizo bien las tres preguntas : " <<(float)(buenas*100.00)/n<<"%"<< endl;
+		cout << "Cantidad de alumnos aprobados : " << aprobado <<endl;
+		cout << "Cantidad de alumnos que hizo mal la pregunta 3 : " <<mal<< endl;
+		cout << "Cantidad de alumnos que no rindieron el examen : " <<40-n<< endl;
+	return 0;
+}
