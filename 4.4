@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+char trans() {
+	char a;
+	do {
+		cout << "Ingrese el tipo de transporte (B: bus cama; V: servicio vip): ";
+		cin >> a;
+		a = toupper(a);
+	} while (a != 'B' && a != 'V' && a != 'F');
+	return a;
+}
+char empresa() {
+	char b;
+	do {
+		cout << "Ingrese la empresa en la que viaja (O: Oltursa; C: Cruz del Sur; L: Linea): ";
+		cin >> b;
+		b = toupper(b);
+	} while (b != 'O' && b != 'C' && b != 'L');
+	return b;
+}char telo() {
+	char c;
+	do {
+		cout << "Ingrese el Hotel en el que se hospeda(P: Los Pinos; E: Emperador; C: Canaveral) : ";
+		cin >> c;
+		c = toupper(c);
+	} while (c != 'P' && c != 'C' && c != 'E');
+	return c;
+}
+int dias() {
+	int d;
+	do {
+		cout << "Numero de dias del viaje: ";
+		cin >> d;
+	} while (d < 3);
+	return d;
+}
+int main() {
+	int vipo = 0, vipc = 0, buso = 0, busc = 0, busl = 0, oltrusa=0, viajeros=0, treinta=0;
+	char asd;
+	char a = trans();
+	while (a != 'F') {
+		char b = empresa();
+		char c = telo();
+		int d = dias();
+		switch (b) {
+		case 'O': viajeros++;
+			if (a == 'B') { buso += 150; break; }
+			else { vipo += 230; break;
+			}
+		case 'C': viajeros++;
+			if (a == 'B') { busc += 200; break;
+			}
+			else { vipc += 300; break;
+			}
+		case 'L':viajeros++;
+			busl += 100; 
+		}
+		if (b=='O') oltrusa++;
+		if (c != 'P') treinta++;
+		cout << endl;
+		a = trans();
+		if (a == 'F') break;
+	}
+	cout << endl;
+	cout << "Cantidad de viajeros que se alojan en un hotel de US$ 30: "<< treinta <<endl;
+		cout << "% de viajeros que eligieron Oltursa : "<<(float)(oltrusa*100)/viajeros << endl;
+		cout << "Reporte de ingresos de cada empresa "<<endl;
+		cout << "Oltursa "<<endl;
+		cout << "Bus Cama : "<< buso <<endl;
+		cout << "Servicio VIP : "<< vipo <<endl;
+		cout << "Cruz del Sur "<<endl;
+		cout << "Bus Cama : "<<busc <<endl;
+		cout << "Servicio VIP : "<<vipc <<endl;
+		cout << "Linea "<<endl;
+		cout << "Bus Cama : "<<busl <<endl;
+	return 0;
+}
